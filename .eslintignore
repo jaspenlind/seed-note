@@ -1,0 +1,7 @@
+**/node_modules
+**/dist
+**/coverage/*
+**/*.d.ts
+**/src/types/
+**/webpack*.js
+**/.webpack
