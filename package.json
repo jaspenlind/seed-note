@@ -78,6 +78,8 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "@material-ui/icons": "^4.5.1",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "electron-squirrel-startup": "^1.0.0",
