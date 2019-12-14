@@ -2,14 +2,40 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { chords } from "tonal-index";
 import { orderBy } from "lodash";
-import { AppBar, Toolbar, Typography, InputBase, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  InputBase,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Grid
+} from "@material-ui/core";
 import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
+import { Search, MusicNote } from "@material-ui/icons";
+import GrandStaffStart from "./svg/staffs/grand-start.svg";
+import GrandStaff from "./svg/staffs/grand.svg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
+    },
+    paper: {
+      padding: theme.spacing(0),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+      border: 0
+    },
+    staff: {
+      width: "calc(100% - 125px)",
+      height: "125px"
+    },
+    staffStart: {
+      width: "97px",
+      height: "125px"
     },
     menuButton: {
       marginRight: theme.spacing(2)
@@ -75,6 +101,9 @@ const Chord = ({ notes }: ChordProps) => {
     <List>
       {ranked.map((value, index) => (
         <ListItem key={index} button>
+          <ListItemIcon>
+            <MusicNote />
+          </ListItemIcon>
           <ListItemText>
             {value.root}
             {value.type} ({value.notes})
@@ -102,7 +131,7 @@ const App = () => {
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <SearchIcon />
+                <Search />
               </div>
               <InputBase
                 placeholder="Find chord…"
@@ -118,6 +147,13 @@ const App = () => {
         </AppBar>
       </div>
       <Chord notes={notes}></Chord>
+      <Typography component="div">
+        <GrandStaffStart viewBox="0 0 97 125" preserveAspectRatio="none" />
+        <GrandStaff className={classes.staff} viewBox="0 0 87 125" preserveAspectRatio="none" />
+      </Typography>
+      <Grid container spacing={0} alignItems="flex-start">
+        <Grid item className={classes.staffStart} xs={12}></Grid>
+      </Grid>
     </div>
   );
 };
