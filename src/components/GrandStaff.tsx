@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { WholeNote } from "./Notes";
 
 const yPos = (note: string): number => {
@@ -49,11 +49,41 @@ export interface GrandStaffProps {
   notes: string;
 }
 
+export interface Staff {
+  name: string;
+  offsetY: number;
+  lineCount: number;
+  lineSpacing: number;
+}
+
+const createStaff = (props?: Partial<Staff>): Staff => {
+  return { ...{ name: "empty", offsetY: 0, lineCount: 5, lineSpacing: 9 }, ...props };
+};
+
+const StaffLines = (props: Partial<Staff>) => {
+  const staff = createStaff(props);
+  const ys: number[] = [];
+  for (let i = 0; i < staff.lineCount; i += 1) {
+    ys.push(staff.offsetY + i * staff.lineSpacing);
+  }
+  return (
+    <>
+      {ys.map((x, i) => (
+        <use key={`${staff.name}${i}`} href="#line" y={x} />
+      ))}
+      ;
+    </>
+  );
+};
+
 export const GrandStaff = (props: GrandStaffProps) => {
   const notes = props.notes
     .trim()
     .split(" ")
     .filter(x => x !== "");
+
+  const trebleYStart = 18.5;
+
   return (
     <svg id="svg2" height={125} width={97} {...props}>
       <defs id="staffdefs">
@@ -65,17 +95,10 @@ export const GrandStaff = (props: GrandStaffProps) => {
         id="lines"
         style={{ fill: "none", stroke: "#000000", strokeWidth: 1 }}
       >
-        <use id="bassG" href="#line" y="125.5" />
-        <use id="bassB" href="#line" y="116.5" />
-        <use id="bassD" href="#line" y="108.5" />
-        <use id="bassF" href="#line" y="99.5" />
-        <use id="bassA" href="#line" y="90.5" />
-        <use id="trebleE" href="#line" y="54.5" />
-        <use id="trebleG" href="#line" y="45.5" />
-        <use id="trebleB" href="#line" y="36.5" />
-        <use id="trebleD" href="#line" y="27.5" />
-        <use id="trebleF" href="#line" y="18.5" />
+        <StaffLines name="treble" offsetY={18.5} />
+        <StaffLines name="bass" offsetY={90.5} />
       </g>
+      {/* <WholeNote y={trebleYStart} /> */}
       <g>
         {notes.map((note, index) => (
           <WholeNote key={index} y={yPos(`${note}`)} />
