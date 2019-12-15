@@ -35,6 +35,16 @@
     "node": true
   },
   "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "no-console": ["off"],
     "import/prefer-default-export": ["off"],
     "no-restricted-syntax": ["off", "ForOfStatement"],

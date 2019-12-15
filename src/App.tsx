@@ -2,21 +2,10 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { chords } from "tonal-index";
 import { orderBy } from "lodash";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  InputBase,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Grid
-} from "@material-ui/core";
+import { AppBar, Toolbar, Typography, InputBase, List, ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
 import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles";
 import { Search, MusicNote } from "@material-ui/icons";
-import GrandStaffStart from "./svg/staffs/grand-start.svg";
-import GrandStaff from "./svg/staffs/grand.svg";
+import { GrandStaff } from "./components/GrandStaff";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       border: 0
     },
     staff: {
-      width: "calc(100% - 125px)",
+      width: "calc(100% - 97px)",
       height: "125px"
     },
     staffStart: {
@@ -147,13 +136,7 @@ const App = () => {
         </AppBar>
       </div>
       <Chord notes={notes}></Chord>
-      <Typography component="div">
-        <GrandStaffStart viewBox="0 0 97 125" preserveAspectRatio="none" />
-        <GrandStaff className={classes.staff} viewBox="0 0 87 125" preserveAspectRatio="none" />
-      </Typography>
-      <Grid container spacing={0} alignItems="flex-start">
-        <Grid item className={classes.staffStart} xs={12}></Grid>
-      </Grid>
+      <GrandStaff notes={notes}></GrandStaff>
     </div>
   );
 };

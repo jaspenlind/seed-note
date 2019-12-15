@@ -2,7 +2,7 @@
   "name": "seed-note",
   "productName": "seed-note",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Electron app for building chords",
   "main": ".webpack/main",
   "scripts": {
     "build": "tsc",
@@ -26,7 +26,13 @@
     "test:watch": "jest --watch-all -t",
     "version": "git add -A src"
   },
-  "keywords": [],
+  "keywords": [
+    "music",
+    "chords",
+    "electron",
+    "typescript",
+    "sheet-music"
+  ],
   "author": {
     "name": "Johan",
     "email": "johan.aspenlind@b3.se"
@@ -125,7 +131,7 @@
     "prettier": "^1.19.1",
     "promptly": "^3.0.3",
     "react-svg-loader": "^3.0.3",
-    "style-loader": "^0.23.1",
+    "style-loader": "^1.0.1",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3"
