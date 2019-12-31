@@ -38,7 +38,20 @@ const StaffLines = (props: Partial<Staff>) => {
 export const GrandStaff = (props: GrandStaffProps) => {
   const layout = pianoLayout();
   const staff = noteStaff(layout);
-  const yPos = (note: PitchedNote) => (note === middleC ? 0 : staff.getPosition(note) * 4.4);
+  const middlePositionsOnBassStaff = true;
+
+  const yPos = (note: PitchedNote) => {
+    const distance = 4.4;
+    const gap = distance * 2;
+    const index = staff.getPosition(note);
+
+    if (index === 0) {
+      return middlePositionsOnBassStaff ? gap : -gap;
+    }
+
+    const down = index > 0;
+    return down ? index * distance + gap : index * distance - gap;
+  };
 
   const notes = props.notes
     .trim()
@@ -61,7 +74,9 @@ export const GrandStaff = (props: GrandStaffProps) => {
           style={{ fill: "none", stroke: "black", strokeWidth: 1 }}
         >
           <StaffLines name="treble" offsetY={18.5} />
-          <line transform="translate(10, 72)" x1={-40} x2={500} y={0} stroke="black" strokeWidth="1" />
+          <line transform="translate(230, 63)" x1={0} x2={90} y={0} stroke="black" strokeWidth="1" />
+          {/* <line transform="translate(230, 72)" x1={0} x2={90} y={0} stroke="black" strokeWidth="1" /> */}
+          <line transform="translate(230, 81)" x1={0} x2={90} y={0} stroke="black" strokeWidth="1" />
           <StaffLines name="bass" offsetY={90.5} />
         </g>
         <g transform="translate(0,72.5)">
