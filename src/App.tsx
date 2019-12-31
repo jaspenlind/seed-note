@@ -6,6 +6,7 @@ import { AppBar, Toolbar, Typography, InputBase, List, ListItem, ListItemText, L
 import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles";
 import { Search, MusicNote } from "@material-ui/icons";
 import { GrandStaff } from "./components/GrandStaff";
+import { pianoLayout } from "./rules/PianoLayout";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -80,12 +81,34 @@ type ChordProps = {
   notes: string;
 };
 
+const layout = pianoLayout();
+
 const Chord = ({ notes }: ChordProps) => {
   const split = notes.split(" ");
-  const result = chords.all().filter(x => x.notes.every(z => split.includes(z)));
 
-  const ranked = orderBy(result, x => x.notes.length, "desc");
+  const chordNotes = split
+    .map(x => layout.findNote(x))
+    .filter(x => x !== null)
+    .map(x => `${x?.symbol.toUpperCase()}${x?.accidential?.symbol || ""}`);
 
+  if (chordNotes.length < 2) return <></>;
+
+  const root = chordNotes.length > 0 ? chordNotes[0] : "";
+
+  const result = chords.all().filter(x => x.notes.some(z => chordNotes.includes(z)));
+
+  const ranked = orderBy(
+    result,
+    [
+      x => x.notes.length === chordNotes.length && x.notes.every((z, index) => chordNotes[index] === z),
+      x => x.root === root,
+      x => x.notes[0] === root,
+      x => x.notes.length === chordNotes.length
+    ],
+    ["desc", "desc", "desc", "desc"]
+  );
+
+  if (ranked.length > 20) ranked.length = 20;
   return (
     <List>
       {ranked.map((value, index) => (
