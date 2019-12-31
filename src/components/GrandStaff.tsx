@@ -1,11 +1,8 @@
 import React from "react";
-import { WholeNote, Accidential } from "./Notes";
-
-export interface NoteSegment {
-  note: string;
-  accidential: Accidential;
-  octave: number;
-}
+import { WholeNote } from "./Notes";
+import { pianoLayout } from "../rules/PianoLayout";
+import { PitchedNote, middleC } from "../rules/Note";
+import { noteStaff } from "../rules/NoteStaff";
 
 export interface GrandStaffProps {
   notes: string;
@@ -17,32 +14,6 @@ export interface Staff {
   lineCount: number;
   lineSpacing: number;
 }
-
-const maxPositions = 57;
-
-const noteLayout = (maxKeys: number) => {
-  const getAllPositions = () => {
-    const positions: NoteSegment[] = [];
-
-    let octave = 0;
-
-    const keys = [..."ABCDEFG"];
-    while (positions.length <= maxKeys) {
-      for (const key of keys) {
-        positions.push({ note: key, octave, accidential: Accidential.none });
-      }
-      octave += 1;
-    }
-
-    return positions;
-  };
-
-  const positions = getAllPositions();
-
-  return {
-    positions
-  };
-};
 
 const createStaff = (props?: Partial<Staff>): Staff => {
   return { ...{ name: "empty", offsetY: 0, lineCount: 5, lineSpacing: 9 }, ...props };
@@ -65,65 +36,17 @@ const StaffLines = (props: Partial<Staff>) => {
 };
 
 export const GrandStaff = (props: GrandStaffProps) => {
-  const layout = noteLayout(maxPositions);
-
-  const getOctave = (note: string): number => {
-    const octave = parseInt(note.substring(note.length - 1), 10);
-
-    return Number.isNaN(octave) ? 5 : octave;
-  };
-
-  const getAccidential = (note: string): Accidential => {
-    if (note.length < 2) return Accidential.none;
-
-    const sign = note[1];
-
-    switch (sign) {
-      case "b":
-        return Accidential.flat;
-      case "#":
-        return Accidential.sharp;
-      default:
-        return Accidential.none;
-    }
-  };
-
-  const getSegment = (note: string): NoteSegment | null => {
-    const segment = {
-      note: note[0],
-      accidential: getAccidential(note),
-      octave: getOctave(note)
-    };
-
-    if (layout.positions.some(x => x.note === segment.note && x.octave === segment.octave)) {
-      return segment;
-    }
-
-    return null;
-  };
-
-  const yPos = (note: NoteSegment): number => {
-    const middleC = layout.positions.findIndex(x => x.note === "C" && x.octave === 4);
-    const noteIndex = layout.positions.findIndex(x => x.note === note.note && x.octave === note.octave);
-
-    if (noteIndex === middleC) return 0;
-
-    const index = middleC - noteIndex;
-    const isBass = index > 0;
-
-    const pos = index * 4.4;
-    const middlePadding = 0;
-
-    return isBass ? pos + middlePadding : pos - middlePadding;
-  };
+  const layout = pianoLayout();
+  const staff = noteStaff(layout);
+  const yPos = (note: PitchedNote) => (note === middleC ? 0 : staff.getPosition(note) * 4.4);
 
   const notes = props.notes
     .trim()
     .split(" ")
     .filter(x => x !== "")
-    .map(x => getSegment(x))
+    .map(x => layout.findNote(x))
     .filter(x => x !== null)
-    .map(x => x as NoteSegment);
+    .map(x => x as PitchedNote);
 
   return (
     <svg id="svg2" height={325} width={97} {...props}>

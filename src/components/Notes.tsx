@@ -1,16 +1,12 @@
 import React from "react";
+import { flat, sharp, Accidential } from "../rules/Accidential";
 
-export enum Accidential {
-  none,
-  sharp,
-  flat
-}
 export interface Coordinate {
   x: number;
   y: number;
 }
 export interface NoteProps extends Coordinate {
-  accidential: Accidential;
+  accidential?: Accidential;
 }
 
 const style = { fill: "#000000", strokeWidth: 0.336731 };
@@ -42,14 +38,14 @@ const Flat = (coord: Coordinate) => {
 };
 
 export const WholeNote = (props: Partial<NoteProps>) => {
-  const p = { ...{ x: 0, y: 0, accidential: Accidential.none }, ...props };
+  const p = { ...{ x: 0, y: 0 }, ...props };
   const { x, y } = p;
 
   return (
     <g>
       <path className="note" transform={translate(x, y)} style={style} d={shapes.wholeNote} />
-      {p.accidential === Accidential.flat && <Flat x={x - 24} y={y - 107} />}
-      {p.accidential === Accidential.sharp && <Sharp x={x - 24} y={y - 113} />}
+      {p.accidential === flat && <Flat x={x - 24} y={y - 107} />}
+      {p.accidential === sharp && <Sharp x={x - 24} y={y - 113} />}
     </g>
   );
 };
