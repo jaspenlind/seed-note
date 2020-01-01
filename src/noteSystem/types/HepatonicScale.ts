@@ -1,11 +1,4 @@
-import { Note } from "./Note";
-import { Tonic } from "./Tonic";
-
-export interface HepatonicNote {
-  tonic: Tonic;
-  note: Note;
-  isLeading: boolean;
-}
+import { HepatonicNote } from ".";
 
 export interface HepatonicScale {
   tonic: HepatonicNote;

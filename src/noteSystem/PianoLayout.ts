@@ -1,7 +1,6 @@
-import { flat, sharp, Accidential } from "./Accidential";
-import { NoteLayout } from "./NoteLayout";
-import { Note, PitchedNote } from "./Note";
-import octave, { create, Octave } from "./Octave";
+import { flat, sharp } from "./accidentials";
+import { Accidential, Note, NoteLayout, Octave, PitchedNote } from "./types";
+import octave, { create } from "./octaves";
 
 const { zero, one, two, three, four, five, six, seven, eight } = octave;
 

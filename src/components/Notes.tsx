@@ -1,5 +1,6 @@
 import React from "react";
-import { flat, sharp, Accidential } from "../rules/Accidential";
+import { Accidential } from "../noteSystem/types";
+import { flat, sharp } from "../noteSystem/accidentials";
 
 export interface Coordinate {
   x: number;

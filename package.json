@@ -15,7 +15,6 @@
     "format": "prettier --ignore-path .eslintignore --write \"**/*.{js,ts,jsx,tsx}\" -c",
     "lint": "eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "postversion": "git push && git push --tags && npm run clean",
-    "prepare": "npm run build",
     "prepublishOnly": "npm run test && npm run lint",
     "release:alpha": "npm version prerelease --preid alpha -m \" build: :bookmark:%s\"",
     "release:beta": "npm version prerelease --preid beta -m \"build: :bookmark: %s\"",
@@ -92,6 +91,7 @@
     "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "string-converter": "^1.0.0",
     "tonal": "^2.2.2",
     "tonal-index": "^2.2.2"
   },

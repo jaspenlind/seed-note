@@ -1,11 +1,8 @@
-import note, { Note, PitchedNote, pitched } from "./Note";
+import { Note, Octave } from "./types";
+import allNotes from "./notes";
+import { create as pitched } from "./pitchedNotes";
 
-export interface Octave {
-  notes: PitchedNote[];
-  pitch: number;
-}
-
-const { Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Gb, G, Gs } = note;
+const { Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Gb, G, Gs } = allNotes;
 
 export const create = (pitch: number, notes?: Note[]): Readonly<Octave> => {
   const notesInOctave = notes || [Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Gb, G, Gs];

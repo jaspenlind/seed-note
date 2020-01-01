@@ -1,8 +1,8 @@
 import React from "react";
 import { WholeNote } from "./Notes";
-import { pianoLayout } from "../rules/PianoLayout";
-import { PitchedNote } from "../rules/Note";
-import { noteStaff } from "../rules/NoteStaff";
+import { pianoLayout } from "../noteSystem/PianoLayout";
+import { PitchedNote } from "../noteSystem/types";
+import { noteStaff } from "../noteSystem/staffs";
 
 export interface GrandStaffProps {
   notes: string;

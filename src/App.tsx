@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
 import { GrandStaff } from "./components/GrandStaff";
-import { pianoLayout } from "./rules/PianoLayout";
+import { pianoLayout } from "./noteSystem/PianoLayout";
 import { useChordFinder } from "./components/ChordFinder";
 import { ChordResult } from "./components/ChordResult";
 

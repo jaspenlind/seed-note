@@ -1,5 +1,4 @@
-import { Note, PitchedNote } from "./Note";
-import { Octave } from "./Octave";
+import { Note, Octave, PitchedNote } from ".";
 
 export interface NoteLayout {
   octaves: Octave[];

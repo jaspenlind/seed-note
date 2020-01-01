@@ -4,7 +4,7 @@ import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles"
 import { Search } from "@material-ui/icons";
 import { orderBy } from "lodash";
 import { chords, Result } from "tonal-index";
-import { NoteLayout } from "../rules/NoteLayout";
+import { NoteLayout } from "../noteSystem/types";
 
 export interface ChordFinderProps {
   layout: NoteLayout;
