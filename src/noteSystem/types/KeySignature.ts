@@ -1,8 +1,11 @@
 import { StringConvertible } from "string-converter";
-import { Accidential } from ".";
+import { KeySignatureKey, KeySignatureName, KeySignatureType, Note } from ".";
 
 export interface KeySignature extends StringConvertible {
-  name: string;
-  type: Accidential;
-  signatures: number;
+  name: KeySignatureName;
+  majorKey: KeySignatureKey;
+  minorKey: KeySignatureKey;
+  type: KeySignatureType;
+  sharps: Note[];
+  flats: Note[];
 }

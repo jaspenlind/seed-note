@@ -1,11 +1,6 @@
 import React from "react";
-import { gPosition, fPosition } from "../noteSystem/staffPositions";
 import { pianoLayout } from "../noteSystem/noteLayouts";
-import { grandStaff } from "../noteSystem/staffs";
-import { G4 } from "../noteSystem/pitchedNotes";
-// import { tempSignature } from "../noteSystem/keySignatures";
-// import { staff, timeSignature } from "../noteSystem/staffs";
-// import clefs from "../noteSystem/clefs";
+import { grandStaff } from "../noteSystem/noteStaffs";
 
 export const StaffComponent = () => {
   const staff = grandStaff(pianoLayout());

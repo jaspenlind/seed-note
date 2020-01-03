@@ -38,26 +38,74 @@ const getParallell = (scale: Scale): Scale => {
 //   relativeMajor: MajorScale;
 //   parallelMajor: MajorScale;
 
-const CMajor = create({ baseNote: notes.C, notes: [C, D, E, F, G, A, B] });
-const DMajor = create({ baseNote: notes.D, notes: [D, E, F, G, A, B, Cs] });
-const EMajor = create({ baseNote: notes.E, notes: [E, Fs, Gs, A, B, Cs, Ds] });
-const FMajor = create({ baseNote: notes.E, notes: [F, G, A, Bb, C, D, E] });
-const GMajor = create({ baseNote: notes.G, notes: [G, A, B, C, D, E, Fs] });
-const AMajor = create({ baseNote: notes.A, notes: [A, B, Cs, D, E, Fs, Gs] });
-const BMajor = create({ baseNote: notes.B, notes: [B, Cs, Ds, E, Fs, Gs, As] });
-const FsMajor = create({ baseNote: Fs, notes: [Fs, Gs, As, B, Cs, Ds, sharps.E] });
-const CsMajor = create({
+export const CMajor = create({ baseNote: notes.C, notes: [C, D, E, F, G, A, B] });
+export const DMajor = create({ baseNote: notes.D, notes: [D, E, F, G, A, B, Cs] });
+export const EMajor = create({ baseNote: notes.E, notes: [E, Fs, Gs, A, B, Cs, Ds] });
+export const FMajor = create({ baseNote: notes.E, notes: [F, G, A, Bb, C, D, E] });
+export const GMajor = create({ baseNote: notes.G, notes: [G, A, B, C, D, E, Fs] });
+export const AMajor = create({ baseNote: notes.A, notes: [A, B, Cs, D, E, Fs, Gs] });
+export const BMajor = create({ baseNote: notes.B, notes: [B, Cs, Ds, E, Fs, Gs, As] });
+export const FsMajor = create({ baseNote: Fs, notes: [Fs, Gs, As, B, Cs, Ds, sharps.E] });
+export const CsMajor = create({
   baseNote: notes.Cs,
   notes: [Cs, Ds, sharps.E, Fs, Gs, As, sharps.B]
 });
-const AbMajor = create({
+export const AbMajor = create({
   baseNote: Ab,
   notes: [Ab, Bb, C, Db, Eb, F, G]
 });
-const BbMajor = create({ baseNote: Bb, notes: [Bb, C, D, Eb, F, G, A] });
-const CbMajor = create({ baseNote: flats.C, notes: [flats.C, Db, Eb, flats.F, Gb, Ab, Bb] });
-const DbMajor = create({ baseNote: Db, notes: [Db, Eb, F, Gb, Ab, Bb, C] });
-const EbMajor = create({ baseNote: Eb, notes: [Eb, F, G, Ab, Bb, C, D] });
-const GbMajor = create({ baseNote: Gb, notes: [Gb, Ab, Bb, flats.C, Db, Eb, F] });
+export const BbMajor = create({ baseNote: Bb, notes: [Bb, C, D, Eb, F, G, A] });
+export const CbMajor = create({ baseNote: flats.C, notes: [flats.C, Db, Eb, flats.F, Gb, Ab, Bb] });
+export const DbMajor = create({ baseNote: Db, notes: [Db, Eb, F, Gb, Ab, Bb, C] });
+export const EbMajor = create({ baseNote: Eb, notes: [Eb, F, G, Ab, Bb, C, D] });
+export const GbMajor = create({ baseNote: Gb, notes: [Gb, Ab, Bb, flats.C, Db, Eb, F] });
 
-// TODO: Minor scales & key signatures
+export const AMinor = create({ baseNote: A, notes: [A, B, C, D, E, F, G] });
+export const EMinor = create({ baseNote: E, notes: [E, Fs, G, A, B, C, D] });
+export const BMinor = create({ baseNote: B, notes: [B, Cs, D, E, Fs, G, A] });
+export const FsMinor = create({ baseNote: Fs, notes: [Fs, Gs, A, B, Cs, D, E] });
+export const CsMinor = create({ baseNote: Cs, notes: [Cs, Ds, E, Fs, Gs, A, B] });
+export const GsMinor = create({ baseNote: Gs, notes: [Gs, As, B, Cs, Ds, E, Fs] });
+export const DsMinor = create({ baseNote: Ds, notes: [Ds, sharps.E, Fs, Gs, As, B, Cs] });
+export const AsMinor = create({ baseNote: As, notes: [As, sharps.B, Cs, Ds, sharps.E, Fs, Gs] });
+export const DMinor = create({ baseNote: D, notes: [D, E, F, G, A, Bb, C] });
+export const GMinor = create({ baseNote: G, notes: [G, A, Bb, C, D, sharps.E, F] });
+export const CMinor = create({ baseNote: C, notes: [C, D, Eb, F, G, Ab, Bb] });
+export const FMinor = create({ baseNote: F, notes: [F, G, Ab, Bb, C, Db, Eb] });
+export const BbMinor = create({ baseNote: Bb, notes: [Bb, C, Db, Eb, F, Gb, Ab] });
+export const EbMinor = create({ baseNote: Eb, notes: [Eb, F, Gb, Ab, Bb, flats.C, Db] });
+export const AbMinor = create({ baseNote: Ab, notes: [Ab, Bb, flats.C, Db, Eb, flats.F, Gb] });
+
+export default {
+  empty,
+  CMajor,
+  BMajor,
+  DMajor,
+  EMajor,
+  FMajor,
+  FsMajor,
+  GMajor,
+  AMajor,
+  CsMajor,
+  AbMajor,
+  BbMajor,
+  CbMajor,
+  DbMajor,
+  EbMajor,
+  GbMajor,
+  AMinor,
+  EMinor,
+  BMinor,
+  FsMinor,
+  CsMinor,
+  GsMinor,
+  DsMinor,
+  AsMinor,
+  DMinor,
+  GMinor,
+  CMinor,
+  FMinor,
+  BbMinor,
+  EbMinor,
+  AbMinor
+};

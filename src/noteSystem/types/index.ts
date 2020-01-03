@@ -8,6 +8,8 @@ export * from "./GrandStaff";
 export * from "./HepatonicNote";
 export * from "./HepatonicScale";
 export * from "./KeySignature";
+export * from "./KeySignatureKey";
+export * from "./KeySignatureName";
 export * from "./KeySignatureType";
 export * from "./Ledger";
 export * from "./LedgerPosition";
