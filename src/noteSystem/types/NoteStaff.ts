@@ -1,5 +1,8 @@
-import { PitchedNote } from ".";
+import { Clef, KeySignature, StaffPosition, TimeSignature } from ".";
 
 export interface NoteStaff {
-  getPosition: (note: PitchedNote) => number;
+  keySignature: KeySignature;
+  clef: Clef;
+  timeSignature: TimeSignature;
+  positions: StaffPosition[];
 }

@@ -1,42 +1,52 @@
-import { NoteLayout, NoteStaff, PitchedNote } from "./types";
+import {
+  Clef,
+  GrandStaff,
+  KeySignature,
+  NoteLayout,
+  NoteStaff,
+  NoteStaffOld,
+  PianoLayout,
+  PitchedNote,
+  StaffPosition,
+  TimeSignature
+} from "./types";
 import { middleC } from "./pitchedNotes";
+import { fPosition, gPosition } from "./staffPositions";
 
-// TODO
-// import clefs from "./clefs";
+export const timeSignature: TimeSignature = {
+  name: "temp"
+};
 
-// export type LedgerType = "Above" | "Below";
+// export const staff = (
+//   layout: NoteLayout,
+//   keySignature: KeySignature,
+//   clef: Clef,
+//   timesSignature: TimeSignature
+// ): NoteStaff => {
+//   const clefStaff = clefToStaffMappings.get(clef.symbol);
 
-// export interface Ledger {
-//   type: LedgerType;
-//   lines: number;
-// }
+//   const positions = (clefStaff && clefStaff.getStaffPositions(layout)) || [];
+//   // const positions = layout.notes.filter(x => x.accidential === undefined).map(x => staffPosition(x, layout, clef));
 
-// export interface StaffPosition {
-//   number: number;
-//   note: PitchedNote;
-//   ledger?: Ledger;
-// }
-
-// export interface StaffRule {
-//   clef: Clef;
-//   // positions: StaffPosition[];
-//   notes: PitchedNote[];
-//   positions: StaffPosition[];
-//   getPosition: (note: PitchedNote) => StaffPosition;
-//   getNote: (position: number | StaffPosition) => PitchedNote;
-//   // [index: string]: StaffPosition;
-// }
-
-// export const wipStaff = (clef: Clef, notes: PitchedNote): WipStaff => {
-//   const positions = (note: [PitchedNote]): StaffPosition => ({ position: 2, note: middleC });
 //   return {
+//     keySignature,
 //     clef,
-//     notes,
+//     timeSignature: timesSignature,
 //     positions
 //   };
 // };
 
-export const noteStaff = (layout: NoteLayout): NoteStaff => {
+export const grandStaff = (layout: PianoLayout): GrandStaff => {
+  const upperPositions = layout.treble.notes.map(x => gPosition(x, layout.treble));
+  const lowerPositions = layout.bass.notes.map(x => fPosition(x, layout.bass));
+
+  return {
+    treble: upperPositions,
+    bass: lowerPositions
+  };
+};
+
+export const noteStaff = (layout: NoteLayout): NoteStaffOld => {
   const notesWithoutAccidentials = layout.notes.filter(x => x.accidential === undefined);
   const middleCIndex = notesWithoutAccidentials.indexOf(middleC);
 

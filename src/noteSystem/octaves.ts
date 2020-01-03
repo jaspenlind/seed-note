@@ -2,10 +2,10 @@ import { Note, Octave } from "./types";
 import allNotes from "./notes";
 import { create as pitched } from "./pitchedNotes";
 
-const { Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Gb, G, Gs } = allNotes;
+const { Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Fs, Gb, G, Gs } = allNotes;
 
 export const create = (pitch: number, notes?: Note[]): Readonly<Octave> => {
-  const notesInOctave = notes || [Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Gb, G, Gs];
+  const notesInOctave = notes || [Ab, A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Fs, Gb, G, Gs];
   const octave: Octave = {
     notes: pitched(pitch, ...notesInOctave),
     pitch

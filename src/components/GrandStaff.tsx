@@ -1,6 +1,6 @@
 import React from "react";
 import { WholeNote } from "./Notes";
-import { pianoLayout } from "../noteSystem/PianoLayout";
+import { pianoLayout } from "../noteSystem/noteLayouts";
 import { PitchedNote } from "../noteSystem/types";
 import { noteStaff } from "../noteSystem/staffs";
 

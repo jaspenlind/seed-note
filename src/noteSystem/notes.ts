@@ -1,5 +1,5 @@
-import { Note } from "./types";
-import { flat, sharp } from "./accidentials";
+import { Note, PitchedNote } from "./types";
+import accidentials, { flat, sharp } from "./accidentials";
 
 export const empty: Note = { symbol: "C", toString: () => "" };
 
@@ -8,7 +8,7 @@ export const create = (meta: Partial<Note>): Readonly<Note> => {
     ...empty,
     ...meta
   };
-  const accidential = (note.accidential && note.accidential.type) || "";
+  const accidential = (note.accidential && note.accidential.symbol) || "";
   note.toString = () => `${note.symbol}${accidential}`;
 
   return Object.freeze(note);
@@ -35,6 +35,18 @@ export const Gb = create({ symbol: "G", accidential: flat });
 export const G = create({ symbol: "G" });
 export const Gs = create({ symbol: "G", accidential: sharp });
 export const Ab = create({ symbol: "A", accidential: flat });
+
+const all = [A, As, Bb, B, Bs, Cb, Cs, Db, D, Ds, Eb, E, Es, Fb, F, Fs, Gb, G, Gs, Ab];
+
+export const pitchless = (note: PitchedNote): Note => {
+  return (
+    all.find(x => x.symbol === note.symbol && x.accidential === note.accidential) ||
+    create({ symbol: note.symbol, accidential: note.accidential })
+  );
+};
+
+export const isNatural = (note: Note): boolean =>
+  note.accidential === undefined || note.accidential === accidentials.natural;
 
 export const flats = {
   C: Cb,
@@ -73,5 +85,7 @@ export default {
   Gb,
   G,
   Gs,
-  Ab
+  Ab,
+  create,
+  isNatural
 };
