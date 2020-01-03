@@ -1,5 +1,6 @@
 import { Note, KeySignature, KeySignatureType, Scale, ScaleType } from "./types";
 import notes, { empty as emptyNote, flats, sharps } from "./notes";
+import { byScale, empty as emptyKeySignature } from "./keySignatures";
 
 const { A, As, Bb, B, C, Cs, Db, D, Ds, Eb, E, F, Fs, Gb, G, Gs, Ab } = notes;
 
@@ -8,7 +9,8 @@ export const empty: Scale = Object.freeze({
   baseNote: emptyNote,
   type: "Major",
   notes: [],
-  toString: () => ""
+  toString: () => "",
+  getKeySignature: () => emptyKeySignature
 });
 
 const create = (meta: Partial<Scale>): Scale => {
@@ -16,6 +18,7 @@ const create = (meta: Partial<Scale>): Scale => {
   const name = `${scale.baseNote.toString()} ${scale.type}`;
 
   scale.name = name;
+  scale.getKeySignature = (type: KeySignatureType) => byScale(scale).filter(x => x.type === type)[0];
   scale.toString = () => name;
   return scale;
 };
@@ -60,21 +63,21 @@ export const DbMajor = create({ baseNote: Db, notes: [Db, Eb, F, Gb, Ab, Bb, C] 
 export const EbMajor = create({ baseNote: Eb, notes: [Eb, F, G, Ab, Bb, C, D] });
 export const GbMajor = create({ baseNote: Gb, notes: [Gb, Ab, Bb, flats.C, Db, Eb, F] });
 
-export const AMinor = create({ baseNote: A, notes: [A, B, C, D, E, F, G] });
-export const EMinor = create({ baseNote: E, notes: [E, Fs, G, A, B, C, D] });
-export const BMinor = create({ baseNote: B, notes: [B, Cs, D, E, Fs, G, A] });
-export const FsMinor = create({ baseNote: Fs, notes: [Fs, Gs, A, B, Cs, D, E] });
-export const CsMinor = create({ baseNote: Cs, notes: [Cs, Ds, E, Fs, Gs, A, B] });
-export const GsMinor = create({ baseNote: Gs, notes: [Gs, As, B, Cs, Ds, E, Fs] });
-export const DsMinor = create({ baseNote: Ds, notes: [Ds, sharps.E, Fs, Gs, As, B, Cs] });
-export const AsMinor = create({ baseNote: As, notes: [As, sharps.B, Cs, Ds, sharps.E, Fs, Gs] });
-export const DMinor = create({ baseNote: D, notes: [D, E, F, G, A, Bb, C] });
-export const GMinor = create({ baseNote: G, notes: [G, A, Bb, C, D, sharps.E, F] });
-export const CMinor = create({ baseNote: C, notes: [C, D, Eb, F, G, Ab, Bb] });
-export const FMinor = create({ baseNote: F, notes: [F, G, Ab, Bb, C, Db, Eb] });
-export const BbMinor = create({ baseNote: Bb, notes: [Bb, C, Db, Eb, F, Gb, Ab] });
-export const EbMinor = create({ baseNote: Eb, notes: [Eb, F, Gb, Ab, Bb, flats.C, Db] });
-export const AbMinor = create({ baseNote: Ab, notes: [Ab, Bb, flats.C, Db, Eb, flats.F, Gb] });
+export const AMinor = create({ type: "Minor", baseNote: A, notes: [A, B, C, D, E, F, G] });
+export const EMinor = create({ type: "Minor", baseNote: E, notes: [E, Fs, G, A, B, C, D] });
+export const BMinor = create({ type: "Minor", baseNote: B, notes: [B, Cs, D, E, Fs, G, A] });
+export const FsMinor = create({ type: "Minor", baseNote: Fs, notes: [Fs, Gs, A, B, Cs, D, E] });
+export const CsMinor = create({ type: "Minor", baseNote: Cs, notes: [Cs, Ds, E, Fs, Gs, A, B] });
+export const GsMinor = create({ type: "Minor", baseNote: Gs, notes: [Gs, As, B, Cs, Ds, E, Fs] });
+export const DsMinor = create({ type: "Minor", baseNote: Ds, notes: [Ds, sharps.E, Fs, Gs, As, B, Cs] });
+export const AsMinor = create({ type: "Minor", baseNote: As, notes: [As, sharps.B, Cs, Ds, sharps.E, Fs, Gs] });
+export const DMinor = create({ type: "Minor", baseNote: D, notes: [D, E, F, G, A, Bb, C] });
+export const GMinor = create({ type: "Minor", baseNote: G, notes: [G, A, Bb, C, D, sharps.E, F] });
+export const CMinor = create({ type: "Minor", baseNote: C, notes: [C, D, Eb, F, G, Ab, Bb] });
+export const FMinor = create({ type: "Minor", baseNote: F, notes: [F, G, Ab, Bb, C, Db, Eb] });
+export const BbMinor = create({ type: "Minor", baseNote: Bb, notes: [Bb, C, Db, Eb, F, Gb, Ab] });
+export const EbMinor = create({ type: "Minor", baseNote: Eb, notes: [Eb, F, Gb, Ab, Bb, flats.C, Db] });
+export const AbMinor = create({ type: "Minor", baseNote: Ab, notes: [Ab, Bb, flats.C, Db, Eb, flats.F, Gb] });
 
 export default {
   empty,

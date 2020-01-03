@@ -1,12 +1,12 @@
 import { StringConvertible } from "string-converter";
-import { Note, ScaleType, KeySignature } from ".";
+import { KeySignature, KeySignatureType, Note, ScaleType } from ".";
 
 export interface Scale extends StringConvertible {
   name: string;
   baseNote: Note;
-  keySignature?: KeySignature;
   type: ScaleType;
   notes: Note[];
+  getKeySignature: (type: KeySignatureType) => KeySignature;
 }
 
 // export interface MajorScale extends Scale {

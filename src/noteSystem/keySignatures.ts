@@ -1,6 +1,6 @@
-import { KeySignature, KeySignatureKey, KeySignatureType, KeySignatureName } from "./types";
+import { KeySignature, KeySignatureKey, KeySignatureType, KeySignatureName, Scale, ScaleType } from "./types";
 import scales from "./scales";
-import { flats, sharps } from "./notes";
+import { sharps } from "./notes";
 // import notes, { create as createNote, flats, sharps, empty as emptyNote } from "./notes";
 
 const emptyKey: KeySignatureKey = { key: scales.empty };
@@ -75,3 +75,66 @@ export const SharpKeys = [
     sharps: [sharps.F, sharps.C, sharps.G, sharps.D, sharps.A, sharps.E, sharps.B]
   })
 ];
+
+export const FlatKeys = [
+  create({
+    name: "Zero",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.CMajor }),
+    minorKey: createKey({ key: scales.AMinor })
+  }),
+  create({
+    name: "One",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.FMajor }),
+    minorKey: createKey({ key: scales.DMinor })
+  }),
+  create({
+    name: "Two",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.BbMajor }),
+    minorKey: createKey({ key: scales.GMinor })
+  }),
+  create({
+    name: "Three",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.EbMajor }),
+    minorKey: createKey({ key: scales.CMinor })
+  }),
+  create({
+    name: "Four",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.AMajor }),
+    minorKey: createKey({ key: scales.FMinor })
+  }),
+  create({
+    name: "Five",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.DbMajor, enharmonicEquivalentKey: scales.CsMajor }),
+    minorKey: createKey({ key: scales.BbMinor, enharmonicEquivalentKey: scales.AsMinor })
+  }),
+  create({
+    name: "Six",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.GbMajor, enharmonicEquivalentKey: scales.FsMajor }),
+    minorKey: createKey({ key: scales.EbMinor, enharmonicEquivalentKey: scales.DsMinor })
+  }),
+  create({
+    name: "Seven",
+    type: "FlatKeys",
+    majorKey: createKey({ key: scales.CbMajor, enharmonicEquivalentKey: scales.BMajor }),
+    minorKey: createKey({ key: scales.AbMinor, enharmonicEquivalentKey: scales.GsMinor })
+  })
+];
+
+const equals = (first: Scale, second: Scale) => first.baseNote.toString() === second.baseNote.toString();
+
+export const byScale = (scale: Scale): KeySignature[] => {
+  return SharpKeys.concat(FlatKeys).filter(
+    x =>
+      equals(scale, x.majorKey.key) ||
+      (x.majorKey.enharmonicEquivalentKey !== undefined && equals(scale, x.majorKey.enharmonicEquivalentKey)) ||
+      equals(scale, x.minorKey.key) ||
+      (x.minorKey.enharmonicEquivalentKey !== undefined && equals(scale, x.minorKey.enharmonicEquivalentKey))
+  );
+};
