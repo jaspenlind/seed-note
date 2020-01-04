@@ -62,7 +62,7 @@ const App = () => {
           </Toolbar>
         </AppBar>
       </div>
-      {/* <StaffComponent /> */}
+      <StaffComponent />
       <ChordResult result={result.hits} />
       <GrandStaff notes={result.notes}></GrandStaff>
     </div>
