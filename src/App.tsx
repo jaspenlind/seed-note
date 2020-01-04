@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
-import { GrandStaff } from "./components/GrandStaff";
+import { GrandStaffOld } from "./components/GrandStaffOld";
 import { pianoLayout } from "./noteSystem/noteLayouts";
 import { useChordFinder } from "./components/ChordFinder";
 import { ChordResult } from "./components/ChordResult";
-import { StaffComponent } from "./components/StaffComponent";
+import { GrandStaff } from "./components/GrandStaff";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,9 +62,9 @@ const App = () => {
           </Toolbar>
         </AppBar>
       </div>
-      <StaffComponent />
+      <GrandStaff notes={result.notes} />
       <ChordResult result={result.hits} />
-      <GrandStaff notes={result.notes}></GrandStaff>
+      <GrandStaffOld notes={result.notes}></GrandStaffOld>
     </div>
   );
 };
