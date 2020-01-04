@@ -129,6 +129,13 @@ export const FlatKeys = [
 
 const equals = (first: Scale, second: Scale) => first.baseNote.toString() === second.baseNote.toString();
 
+export const get = (keys: number, type: KeySignatureType): KeySignature => {
+  const keysByType = type === "FlatKeys" ? FlatKeys : SharpKeys;
+  const index = keys < 0 || keys >= keysByType.length ? 0 : keys;
+
+  return keysByType[index];
+};
+
 export const byScale = (scale: Scale): KeySignature[] => {
   return SharpKeys.concat(FlatKeys).filter(
     x =>

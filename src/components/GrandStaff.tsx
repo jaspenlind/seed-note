@@ -2,8 +2,7 @@ import React, { SVGAttributes } from "react";
 import { pianoLayout } from "../noteSystem/noteLayouts";
 import { grandStaff } from "../noteSystem/noteStaffs";
 import { NoteStaff } from "./NoteStaff";
-
-const lineWidth = "1.5px";
+import { BarLine } from "./Line";
 
 export const Brace = () => {
   return (
@@ -24,10 +23,6 @@ export const Brace = () => {
   );
 };
 
-export const BarLine = (props: { x?: number }) => {
-  return <line x1={props.x} x2={props.x} y1="39" y2="350" stroke="black" strokeWidth={lineWidth} />;
-};
-
 export interface GrandStaffProps extends SVGAttributes<SVGElement> {
   notes: string;
 }
@@ -40,9 +35,11 @@ export const GrandStaff = (props: GrandStaffProps) => {
       <Brace />
       <g transform="translate(30,200)">
         <BarLine />
-        <NoteStaff grandStaffPosition="Above" clef="G" transform="translate(0, 40)" ledger="true" />
-        <NoteStaff grandStaffPosition="Below" clef="F" transform="translate(0, 250)" ledger="true" />
-        <BarLine x={250} />
+        {/* <BarLine /> */}
+        <NoteStaff grandStaffPosition={"Above"} clef="G" transform="translate(0, 40)" ledger="true" />
+        <NoteStaff grandStaffPosition={"Below"} clef="F" transform="translate(0, 250)" ledger="true" />
+        <BarLine position={250} />
+        {/* <BarLine x={250} /> */}
       </g>
     </svg>
   );
