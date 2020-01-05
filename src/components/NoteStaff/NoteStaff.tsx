@@ -36,13 +36,14 @@ export const NoteStaff = (props: NoteStaffProps) => {
 
   return (
     <g transform={props.transform}>
-      <g className="notes" transform="translate(40,0)">
-        <Note position={-0.5} />
-        <Note position={1.5} />
+      <g className="notes" transform="translate(130,38)">
+        <Note position={0} />
+        {/* <Note position={-0.5} />
+        <Note position={1.5} /> */}
         {/* <Note position={1.5} />
          */}
-        {props.grandStaffPosition === "Above" && <Note position={-10.5} />}
-        {props.grandStaffPosition === "Below" && <Note position={4.5} />}
+        {/* {props.grandStaffPosition === "Above" && <Note position={-10.5} />}
+        {props.grandStaffPosition === "Below" && <Note position={4.5} />} */}
       </g>
       <g className="clef" transform="translate(0,0)">
         {props.clef === "G" && <GClef />}
