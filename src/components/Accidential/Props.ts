@@ -1,3 +1,8 @@
 import { Transformable } from ".";
 
-export type AccidentialProps = Transformable;
+export interface AccidentialProps {
+  classes: {
+    root: string;
+    path: string;
+  };
+}

@@ -1,12 +1,10 @@
 import React from "react";
-import { position } from "src/noteSystem/staffPositions";
 import { LedgerLine, StaffLine } from "../Line";
-import { Flat, Sharp } from "../Accidential";
 import { GClef, FClef } from "../Clef";
 import { KeySignatureType } from "../../noteSystem/types";
 import { range } from "../../utils/generators";
 import { WholeNote } from "../Note";
-import { noteTransform, noteInnerTransform } from "./transforms";
+import { noteTransform } from "./transforms";
 import { G4 } from "../../noteSystem/pitchedNotes";
 
 export const styles = {
@@ -28,7 +26,7 @@ export interface NoteStaffProps {
 }
 
 const Note = (props: { position: number }) => {
-  return <WholeNote note={G4} transform={noteTransform(props.position)} innerTransform={noteInnerTransform()} />;
+  return <WholeNote note={G4} transform={noteTransform(props.position)} />;
 };
 
 export const NoteStaff = (props: NoteStaffProps) => {
@@ -38,12 +36,6 @@ export const NoteStaff = (props: NoteStaffProps) => {
     <g transform={props.transform}>
       <g className="notes" transform="translate(130,38)">
         <Note position={0} />
-        {/* <Note position={-0.5} />
-        <Note position={1.5} /> */}
-        {/* <Note position={1.5} />
-         */}
-        {/* {props.grandStaffPosition === "Above" && <Note position={-10.5} />}
-        {props.grandStaffPosition === "Below" && <Note position={4.5} />} */}
       </g>
       <g className="clef" transform="translate(0,0)">
         {props.clef === "G" && <GClef />}
