@@ -4,4 +4,4 @@ import { Component } from "./Component";
 
 export * from "./Props";
 
-export const WholeNote = withStyles(styles)(Component);
+export const GrandStaff = withStyles(styles)(Component);
