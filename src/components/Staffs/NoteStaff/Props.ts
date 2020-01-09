@@ -1,4 +1,4 @@
-import { KeySignatureType } from "../../noteSystem/types";
+import { KeySignatureType } from "../../../noteSystem/types";
 
 export interface Props {
   clef?: "F" | "G";

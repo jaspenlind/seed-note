@@ -2,9 +2,9 @@ import React from "react";
 import { Props } from ".";
 // import { pianoLayout } from "../noteSystem/noteLayouts";
 // import { grandStaff } from "../noteSystem/noteStaffs";
-import { Brace } from "../Brace";
+import { Brace } from "../../Brace";
 import { NoteStaff } from "../NoteStaff";
-import { BarLine } from "../Lines";
+import { BarLine } from "../../Lines";
 
 export const Component = (props: Props) => {
   const { classes } = props;

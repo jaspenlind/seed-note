@@ -1,6 +1,6 @@
 import React from "react";
-import { Props } from ".";
-import { Flat, Sharp } from "../Accidentials";
+import { Props } from "..";
+import { Flat, Sharp } from "../../Accidentials";
 
 export const Component = (props: Props) => {
   const { classes } = props;

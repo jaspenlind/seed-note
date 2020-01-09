@@ -7,7 +7,7 @@ import { GrandStaffOld } from "./components/GrandStaffOld";
 import { pianoLayout } from "./noteSystem/noteLayouts";
 import { useChordFinder } from "./components/ChordFinder";
 import { ChordResult } from "./components/ChordResult";
-import { GrandStaff } from "./components/GrandStaff";
+import { GrandStaff } from "./components/Staffs";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

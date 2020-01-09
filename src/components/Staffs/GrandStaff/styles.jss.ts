@@ -3,15 +3,15 @@ export const styles = {
     outline: "1px solid #630"
   },
   brace: {
-    transform: "translate(0px,192px) scale(2.85)"
+    transform: "translateY(240px)"
   },
   staffs: {
     transform: "translate(30px,200px)"
   },
   treble: {
-    transform: "translate(0px, 40px)"
+    transform: "translateY(40px)"
   },
   bass: {
-    transform: "translate(0px, 250px)"
+    transform: "translateY(250px)"
   }
 };

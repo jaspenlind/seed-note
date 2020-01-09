@@ -1,6 +1,5 @@
 export const styles = {
-  root: {},
-  path: {
+  root: {
     fill: "black",
     strokeWidth: 0.336731
   }

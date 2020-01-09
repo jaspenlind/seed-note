@@ -1,12 +1,12 @@
 import React from "react";
 import { Props } from ".";
-import { LedgerLine, StaffLine } from "../Lines";
-import { GClef, FClef } from "../Clefs";
+import { LedgerLine, StaffLine } from "../../Lines";
+import { GClef, FClef } from "../../Clefs";
 
-import { range } from "../../utils/generators";
-import { WholeNote } from "../Note";
-import { StaffPosition } from "./StaffPosition";
-import { G4 } from "../../noteSystem/pitchedNotes";
+import { range } from "../../../utils/generators";
+import { WholeNote } from "../../Notes";
+import { StaffPosition } from "../StaffPosition";
+import { G4 } from "../../../noteSystem/pitchedNotes";
 
 const lineSpacing = 25;
 const firstLinePosition = -2;
@@ -26,8 +26,8 @@ export const Component = (props: Props) => {
         </StaffPosition>
       </g>
       <g className={classes.clef}>
-        {props.clef === "G" && <GClef />}
-        {props.clef === "F" && <FClef />}
+        {props.clef === "G" && <GClef classes={{ root: classes.clef }} />}
+        {props.clef === "F" && <FClef classes={{ root: classes.clef }} />}
       </g>
       <g className={classes.ledger}>
         {props.ledger && props.clef === "G" && (
