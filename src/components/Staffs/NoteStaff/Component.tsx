@@ -2,7 +2,7 @@ import React from "react";
 import { Props } from ".";
 import { LedgerLine, StaffLine } from "../../Lines";
 import { GClef, FClef } from "../../Clefs";
-
+import { Grid, Hexagon } from "../../Hexagon";
 import { range } from "../../../utils/generators";
 import { WholeNote } from "../../Notes";
 import { StaffPosition } from "../StaffPosition";
@@ -21,9 +21,14 @@ export const Component = (props: Props) => {
   return (
     <g className={classes.root}>
       <g className={classes.notes}>
-        <StaffPosition pos={0}>
-          <WholeNote note={G4} />
-        </StaffPosition>
+        <g transform="translate(-7, -12) scale(2.06)">
+          <Grid width={4} height={8} />
+        </g>
+        {/* <g transform="scale(0.8)">
+          <StaffPosition position={1}>
+            <WholeNote note={G4} />
+          </StaffPosition>
+        </g> */}
       </g>
       <g className={classes.clef}>
         {props.clef === "G" && <GClef classes={{ root: classes.clef }} />}

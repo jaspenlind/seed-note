@@ -1,4 +1,6 @@
-export const styles = {
+import { createStyles } from "@material-ui/core/styles";
+
+export const styles = createStyles({
   root: {
     outline: "1px solid #630"
   },
@@ -14,4 +16,4 @@ export const styles = {
   bass: {
     transform: "translateY(250px)"
   }
-};
+});

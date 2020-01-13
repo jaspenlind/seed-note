@@ -5,4 +5,4 @@ import { Component } from "./Component";
 export * from "./Props";
 export * from "./styles.jss";
 
-export const GrandStaff = withStyles(styles)(Component);
+export const Grid = withStyles(styles)(Component);
