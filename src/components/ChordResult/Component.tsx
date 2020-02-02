@@ -1,18 +1,14 @@
 import React from "react";
-import { Result } from "tonal-index";
 import { List, ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
 import { MusicNote } from "@material-ui/icons";
+import { Props } from ".";
 
-export interface ChordResultProps {
-  result: Result[];
-}
-
-export const ChordResult = (props: ChordResultProps) => {
-  const { result } = props;
+export const Component = (props: Props) => {
+  const { classes, result } = props;
   return (
-    <List>
+    <List className={classes.root}>
       {result.map((value, index) => (
-        <ListItem key={index} button>
+        <ListItem className={classes.item} key={index} button>
           <ListItemIcon>
             <MusicNote />
           </ListItemIcon>
