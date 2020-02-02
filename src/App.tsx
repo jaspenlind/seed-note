@@ -3,11 +3,10 @@ import ReactDOM from "react-dom";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
-import { GrandStaffOld } from "./components/GrandStaffOld";
 import { pianoLayout } from "./noteSystem/noteLayouts";
 import { useChordFinder } from "./components/ChordFinder";
 import { ChordResult } from "./components/ChordResult";
-import { GrandStaff } from "./components/Staffs";
+import { GrandStaff } from "./components/Staff";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,14 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
       border: 0
-    },
-    staff: {
-      width: "calc(100% - 97px)",
-      height: "125px"
-    },
-    staffStart: {
-      width: "97px",
-      height: "125px"
     },
     menuButton: {
       marginRight: theme.spacing(2)
@@ -62,9 +53,9 @@ const App = () => {
           </Toolbar>
         </AppBar>
       </div>
-      <GrandStaff notes={result.notes} />
       <ChordResult result={result.hits} />
-      <GrandStaffOld notes={result.notes}></GrandStaffOld>
+      <GrandStaff notes={result.notes} />
+      {/* <GrandStaff notes={result.notes} /> */}
     </div>
   );
 };
