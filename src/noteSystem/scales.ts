@@ -18,7 +18,7 @@ const create = (meta: Partial<Scale>): Scale => {
   const name = `${scale.baseNote.toString()} ${scale.type}`;
 
   scale.name = name;
-  scale.getKeySignature = (type: KeySignatureType) => byScale(scale).filter(x => x.type === type)[0];
+  scale.getKeySignature = (type: KeySignatureType) => byScale(scale).filter((x) => x.type === type)[0];
   scale.toString = () => name;
   return scale;
 };

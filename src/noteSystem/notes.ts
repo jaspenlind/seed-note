@@ -40,7 +40,7 @@ const all = [A, As, Bb, B, Bs, Cb, Cs, Db, D, Ds, Eb, E, Es, Fb, F, Fs, Gb, G, G
 
 export const pitchless = (note: PitchedNote): Note => {
   return (
-    all.find(x => x.symbol === note.symbol && x.accidential === note.accidential) ||
+    all.find((x) => x.symbol === note.symbol && x.accidential === note.accidential) ||
     create({ symbol: note.symbol, accidential: note.accidential })
   );
 };

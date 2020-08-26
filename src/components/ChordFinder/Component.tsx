@@ -25,23 +25,23 @@ export const Component = (props: Props) => {
     const split = notes.split(" ");
 
     const chordNotes = split
-      .map(x => layout.findNote(x))
-      .filter(x => x !== null)
-      .map(x => `${x && x.symbol.toUpperCase()}${(x && x.accidential && x.accidential.symbol) || ""}`);
+      .map((x) => layout.findNote(x))
+      .filter((x) => x !== null)
+      .map((x) => `${x && x.symbol.toUpperCase()}${(x && x.accidential && x.accidential.symbol) || ""}`);
 
     if (chordNotes.length < 2) return emptyState;
 
     const root = chordNotes.length > 0 ? chordNotes[0] : "";
 
-    const matches = chords.all().filter(x => x.notes.some(z => chordNotes.includes(z)));
+    const matches = chords.all().filter((x) => x.notes.some((z) => chordNotes.includes(z)));
 
     const ranked = orderBy(
       matches,
       [
-        x => x.notes.length === chordNotes.length && x.notes.every((z, index) => chordNotes[index] === z),
-        x => x.root === root,
-        x => x.notes[0] === root,
-        x => x.notes.length === chordNotes.length
+        (x) => x.notes.length === chordNotes.length && x.notes.every((z, index) => chordNotes[index] === z),
+        (x) => x.root === root,
+        (x) => x.notes[0] === root,
+        (x) => x.notes.length === chordNotes.length
       ],
       ["desc", "desc", "desc", "desc"]
     );
@@ -66,7 +66,7 @@ export const Component = (props: Props) => {
           input: classes.inputInput
         }}
         inputProps={{ "aria-label": "search" }}
-        onChange={e => setState(prev => getNextState(prev, e))}
+        onChange={(e) => setState((prev) => getNextState(prev, e))}
       />
     </div>
   );

@@ -37,8 +37,8 @@ export const timeSignature: TimeSignature = {
 // };
 
 export const grandStaff = (layout: PianoLayout): GrandStaff => {
-  const upperPositions = layout.treble.notes.map(x => gPosition(x, layout.treble));
-  const lowerPositions = layout.bass.notes.map(x => fPosition(x, layout.bass));
+  const upperPositions = layout.treble.notes.map((x) => gPosition(x, layout.treble));
+  const lowerPositions = layout.bass.notes.map((x) => fPosition(x, layout.bass));
 
   return {
     treble: upperPositions,
@@ -47,11 +47,11 @@ export const grandStaff = (layout: PianoLayout): GrandStaff => {
 };
 
 export const noteStaff = (layout: NoteLayout): NoteStaffOld => {
-  const notesWithoutAccidentials = layout.notes.filter(x => x.accidential === undefined);
+  const notesWithoutAccidentials = layout.notes.filter((x) => x.accidential === undefined);
   const middleCIndex = notesWithoutAccidentials.indexOf(middleC);
 
   const getPosition = (note: PitchedNote): number => {
-    const noteIndex = notesWithoutAccidentials.findIndex(x => x.symbol === note.symbol && x.pitch === note.pitch);
+    const noteIndex = notesWithoutAccidentials.findIndex((x) => x.symbol === note.symbol && x.pitch === note.pitch);
 
     return middleCIndex - noteIndex;
   };

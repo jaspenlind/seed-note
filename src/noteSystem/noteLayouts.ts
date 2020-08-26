@@ -32,22 +32,22 @@ const findNote = (notes: PitchedNote[]) => (note: string): PitchedNote | Note | 
   if (note === "") return null;
   const noteSymbol = note[0].toUpperCase();
 
-  let filter = notes.filter(x => x.symbol === noteSymbol);
+  let filter = notes.filter((x) => x.symbol === noteSymbol);
 
   if (filter.length === 0) return null;
 
   const pitch = findPitch(note) || defaultPitch;
-  filter = filter.filter(x => x.pitch === pitch);
+  filter = filter.filter((x) => x.pitch === pitch);
 
   const accidential = findAccidential(note);
 
   if (accidential !== null) {
-    filter = filter.filter(x => x.accidential === accidential);
+    filter = filter.filter((x) => x.accidential === accidential);
 
     return filter.length > 0 ? filter[0] : null;
   }
 
-  filter = filter.filter(x => x.accidential === undefined);
+  filter = filter.filter((x) => x.accidential === undefined);
 
   return filter.length > 0 ? filter[0] : null;
 };
@@ -61,7 +61,7 @@ export const noteLayout = (notes: PitchedNote[]): NoteLayout => {
 };
 
 export const findNatural = (note: PitchedNote, layout: NoteLayout): PitchedNote => {
-  const natural = layout.notes.find(x => x.symbol === note.symbol && x.pitch === note.pitch && isNatural(x));
+  const natural = layout.notes.find((x) => x.symbol === note.symbol && x.pitch === note.pitch && isNatural(x));
 
   return natural as PitchedNote;
 };
@@ -74,7 +74,7 @@ export const pianoLayout = (): PianoLayout => {
   const splitZero = create(0, [A0, As0, Bb0, B0]);
   const splitEight = create(8, [A8, As8, Bb8, B8, C8]);
   const octaves: Octave[] = [splitZero, one, two, three, four, five, six, seven, splitEight];
-  const notes: PitchedNote[] = octaves.flatMap(x => x.notes);
+  const notes: PitchedNote[] = octaves.flatMap((x) => x.notes);
 
   const middleCIndex = notes.indexOf(middleC);
   const bassNotes = notes.slice(0, middleCIndex + 1);

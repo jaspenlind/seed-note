@@ -12,7 +12,7 @@ const create = (meta: Partial<StaffPosition>): Readonly<StaffPosition> => {
 };
 
 export const findIndex = (note: PitchedNote, notes: PitchedNote[]) => {
-  return (note && notes.findIndex(x => x.symbol === note.symbol && x.pitch === note.pitch)) || -1;
+  return (note && notes.findIndex((x) => x.symbol === note.symbol && x.pitch === note.pitch)) || -1;
 };
 
 const clefOffset = (clef: Clef) => {

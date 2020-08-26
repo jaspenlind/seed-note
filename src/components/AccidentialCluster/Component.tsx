@@ -15,10 +15,10 @@ const naturalNotes = naturals(treble);
 export const Component = (props: Props) => {
   const { dimensions, notes } = props;
   const topToBottom = notes
-    .filter(x => x.accidential !== undefined)
+    .filter((x) => x.accidential !== undefined)
     .sort((x, y) => findNaturalIndex(y) - findNaturalIndex(x));
 
-  const accidentials = topToBottom.map(note => {
+  const accidentials = topToBottom.map((note) => {
     const position = getPosition(note, topToBottom, dimensions);
 
     return (
@@ -31,7 +31,7 @@ export const Component = (props: Props) => {
 };
 
 const findNaturalIndex = (value: PitchedNote) =>
-  naturalNotes.findIndex(n => n.symbol === value.symbol && n.pitch === value.pitch);
+  naturalNotes.findIndex((n) => n.symbol === value.symbol && n.pitch === value.pitch);
 
 const getPosition = (note: PitchedNote, allNotes: PitchedNote[], dimensions: Dimensions): Position => {
   const notePosition = getNotePosition(note, dimensions);
@@ -42,9 +42,9 @@ const getPosition = (note: PitchedNote, allNotes: PitchedNote[], dimensions: Dim
   let x = startX;
   let push = 0;
   for (let i = 0; i < allNotes.length; i += 1) {
-    const neighbours = allNotes.slice(i - pushLeft.distance + 1, i).filter(x => x !== undefined);
+    const neighbours = allNotes.slice(i - pushLeft.distance + 1, i).filter((x) => x !== undefined);
     const distance = Math.abs(
-      Math.min(...neighbours.map(n => getNotePosition(allNotes[i], dimensions).y - getNotePosition(n, dimensions).y))
+      Math.min(...neighbours.map((n) => getNotePosition(allNotes[i], dimensions).y - getNotePosition(n, dimensions).y))
     );
 
     if (distance < pushLeft.distance && push < pushLeft.max) {

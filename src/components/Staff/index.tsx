@@ -18,12 +18,12 @@ export const GrandStaff = (props: Props) => {
   const notes = props.notes
     .trim()
     .split(" ")
-    .filter(x => x !== "")
-    .map(x => layout.findNote(x))
-    .filter(x => x !== null)
-    .map(x => x as PitchedNote);
+    .filter((x) => x !== "")
+    .map((x) => layout.findNote(x))
+    .filter((x) => x !== null)
+    .map((x) => x as PitchedNote);
 
-  const values = notes.map(x => {
+  const values = notes.map((x) => {
     const value: NoteValue = {
       pitch: x,
       value: 4
@@ -59,4 +59,4 @@ export const getNotePosition = (value: PitchedNote, dimensions: Dimensions): Pos
 };
 
 const findNaturalIndex = (value: PitchedNote) =>
-  naturalNotes.findIndex(n => n.symbol === value.symbol && n.pitch === value.pitch);
+  naturalNotes.findIndex((n) => n.symbol === value.symbol && n.pitch === value.pitch);

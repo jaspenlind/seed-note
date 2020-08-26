@@ -19,7 +19,7 @@ export const Component = (props: Props) => {
 
   const tiles = values
     .sort((x, y) => findNaturalIndex(y) - findNaturalIndex(x))
-    .map(value => {
+    .map((value) => {
       const notePosition = getNotePosition(value.pitch, dimensions);
 
       const children = [<Note key={value.pitch.toString()} {...value} />];
@@ -33,7 +33,7 @@ export const Component = (props: Props) => {
   return (
     <g>
       <Grid lines={true} dimensions={dimensions} tiles={tiles} transform={translate(position)}>
-        <AccidentialCluster notes={values.map(x => x.pitch)} dimensions={dimensions} />
+        <AccidentialCluster notes={values.map((x) => x.pitch)} dimensions={dimensions} />
       </Grid>
     </g>
   );
@@ -44,4 +44,4 @@ const getDimensions = (values: NoteValue[]): Dimensions => {
 };
 
 const findNaturalIndex = (value: NoteValue) =>
-  naturalNotes.findIndex(n => n.symbol === value.pitch.symbol && n.pitch === value.pitch.pitch);
+  naturalNotes.findIndex((n) => n.symbol === value.pitch.symbol && n.pitch === value.pitch.pitch);

@@ -22,9 +22,9 @@ export const G4 = createNote(G, 4);
 const fixedNotes = [middleC, F3, G4];
 
 export const create = (pitch: number, ...notes: Note[]): PitchedNote[] => {
-  return notes.map(x => {
+  return notes.map((x) => {
     const fixedNote = fixedNotes.find(
-      f => f.symbol === x.symbol && f.accidential === x.accidential && f.pitch === pitch
+      (f) => f.symbol === x.symbol && f.accidential === x.accidential && f.pitch === pitch
     );
 
     return fixedNote || createNote(x, pitch);

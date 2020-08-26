@@ -138,7 +138,7 @@ export const get = (keys: number, type: KeySignatureType): KeySignature => {
 
 export const byScale = (scale: Scale): KeySignature[] => {
   return SharpKeys.concat(FlatKeys).filter(
-    x =>
+    (x) =>
       equals(scale, x.majorKey.key) ||
       (x.majorKey.enharmonicEquivalentKey !== undefined && equals(scale, x.majorKey.enharmonicEquivalentKey)) ||
       equals(scale, x.minorKey.key) ||
